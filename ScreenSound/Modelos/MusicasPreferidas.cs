@@ -1,9 +1,5 @@
 ﻿using ScreenSound.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.Json;
 
 namespace ScreenSound.Modelos
 {
@@ -13,7 +9,8 @@ namespace ScreenSound.Modelos
         public List<Musica> ListaDeMusicasFavoritas;
 
 
-        public MusicasPreferidas(string nome) {
+        public MusicasPreferidas(string nome)
+        {
 
             Nome = nome;
             ListaDeMusicasFavoritas = new List<Musica>();
@@ -23,14 +20,26 @@ namespace ScreenSound.Modelos
         {
             ListaDeMusicasFavoritas.Add(musica);
         }
-        
+
         public void ExibirMusicasFavoritas()
         {
             Console.WriteLine($"Essas são as musicas favoritas -> {Nome}");
-            foreach(var musica in ListaDeMusicasFavoritas)
+            foreach (var musica in ListaDeMusicasFavoritas)
             {
                 Console.WriteLine($"- {musica.Nome} de {musica.Artista}");
             }
+        }
+
+        public void GerarArquivoJson()
+        {
+            string json = JsonSerializer.Serialize(new
+            {
+                nome = Nome,
+                musicas = ListaDeMusicasFavoritas
+            });
+            string nomeDoArquivo = $"musicas-favoritas-{Nome}.json";
+            File.WriteAllText(nomeDoArquivo, json);
+            Console.WriteLine($"O arquivo {nomeDoArquivo} foi criado com sucesso em: {Path.GetFullPath(nomeDoArquivo)}!");
         }
     }
 }

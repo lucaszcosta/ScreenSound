@@ -1,5 +1,4 @@
 ﻿using ScreenSound.Model;
-using System.Linq;
 
 
 namespace ScreenSound.Filtros;
@@ -22,7 +21,7 @@ internal class LinqFilter
         var artistasPorGeneroMusical = musicas.Where(musica => musica.Genero.Contains(genero)).Select(musica => musica.Artista)
             .Distinct().ToList();
         Console.WriteLine($"Exibindo os artistas por genero musical >>>{genero}");
-        foreach(var artista in artistasPorGeneroMusical)
+        foreach (var artista in artistasPorGeneroMusical)
         {
             Console.WriteLine($"- {artista}");
         }

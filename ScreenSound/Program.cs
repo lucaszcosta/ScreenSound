@@ -1,8 +1,6 @@
-﻿using ScreenSound.Filtros;
-using ScreenSound.Model;
+﻿using ScreenSound.Model;
 using ScreenSound.Modelos;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 
 using (HttpClient client = new HttpClient())
 {
@@ -24,6 +22,10 @@ using (HttpClient client = new HttpClient())
         minhasMusicasPreferidas.AdicionarMusicasFavoritas(musicas[403]);
 
         minhasMusicasPreferidas.ExibirMusicasFavoritas();
+
+        minhasMusicasPreferidas.GerarArquivoJson();
+
+
 
     }
     catch (Exception ex)
