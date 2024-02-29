@@ -1,4 +1,5 @@
-﻿using ScreenSound.Model;
+﻿using ScreenSound.Filtros;
+using ScreenSound.Model;
 using ScreenSound.Modelos;
 using System.Text.Json;
 
@@ -11,20 +12,16 @@ using (HttpClient client = new HttpClient())
         var musicas = JsonSerializer.Deserialize<List<Musica>>(resposta);
         //LinqOrder.ExibirListaDeArtistasOrdenados(musicas);
         //LinqFilter.FiltrarMusicasDeUmArtista(musicas, "Michel Teló");
-
-
-        var minhasMusicasPreferidas = new MusicasPreferidas("Lucas");
-        minhasMusicasPreferidas.AdicionarMusicasFavoritas(musicas[999]);
-        minhasMusicasPreferidas.AdicionarMusicasFavoritas(musicas[38]);
-        minhasMusicasPreferidas.AdicionarMusicasFavoritas(musicas[400]);
-        minhasMusicasPreferidas.AdicionarMusicasFavoritas(musicas[333]);
-        minhasMusicasPreferidas.AdicionarMusicasFavoritas(musicas[39]);
-        minhasMusicasPreferidas.AdicionarMusicasFavoritas(musicas[403]);
-
-        minhasMusicasPreferidas.ExibirMusicasFavoritas();
-
-        minhasMusicasPreferidas.GerarArquivoJson();
-
+        //var minhasMusicasPreferidas = new MusicasPreferidas("Lucas");
+        //minhasMusicasPreferidas.AdicionarMusicasFavoritas(musicas[999]);
+        //minhasMusicasPreferidas.AdicionarMusicasFavoritas(musicas[38]);
+        //minhasMusicasPreferidas.AdicionarMusicasFavoritas(musicas[400]);
+        //minhasMusicasPreferidas.AdicionarMusicasFavoritas(musicas[333]);
+        //minhasMusicasPreferidas.AdicionarMusicasFavoritas(musicas[39]);
+        //minhasMusicasPreferidas.AdicionarMusicasFavoritas(musicas[403]);
+        //minhasMusicasPreferidas.ExibirMusicasFavoritas();
+        //minhasMusicasPreferidas.GerarArquivoJson();
+        LinqFilter.FiltrarMusicasPorTonalidade(musicas, "C");
 
 
     }
